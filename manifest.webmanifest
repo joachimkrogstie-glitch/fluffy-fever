@@ -3,7 +3,7 @@
   "short_name": "Fluffy Fever",
   "start_url": "./",
   "scope": "./",
-  "display": "fullscreen",
+  "display": "standalone",
   "background_color": "#ffd3ea",
   "theme_color": "#ffd3ea",
   "icons": [
