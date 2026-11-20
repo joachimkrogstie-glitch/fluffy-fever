@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Fluffy Fever – tilbakemelding</title>
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+  :root { color-scheme: light; --bg: #fff3f8; --card: #ffffff; --ink: #5a3f62; --soft: #8a7392; --pink: #e8689a; --pink2: #ffd6e6; --line: #f3d6e4; --green: #4f9a6e; --ok: #e9f8ee; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 640px; margin: 0 auto; padding: 20px 16px 40px; }
+  header { text-align: center; margin-bottom: 18px; }
+  header img { width: 76px; height: 76px; border-radius: 18px; box-shadow: 0 4px 14px rgba(120,70,140,.2); }
+  h1 { font-size: 26px; margin: 10px 0 4px; color: var(--pink); }
+  header p { margin: 0; color: var(--soft); }
+  section { background: var(--card); border: 2px solid var(--line); border-radius: 18px; padding: 16px; margin-bottom: 14px; }
+  h2 { font-size: 18px; margin: 0 0 10px; }
+  label.q { display: block; font-weight: 700; margin: 14px 0 6px; }
+  label.q:first-of-type { margin-top: 0; }
+  .hint { font-weight: 400; color: var(--soft); font-size: 14px; }
+  input[type=text], select, textarea { width: 100%; font: inherit; color: inherit; padding: 10px 12px; border: 2px solid var(--line); border-radius: 12px; background: #fffafc; }
+  textarea { min-height: 76px; resize: vertical; }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--pink); }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chips label { display: inline-flex; align-items: center; gap: 6px; padding: 8px 12px; border: 2px solid var(--line); border-radius: 999px; background: #fffafc; cursor: pointer; user-select: none; }
+  .chips input { accent-color: var(--pink); width: 18px; height: 18px; margin: 0; }
+  .chips label:has(input:checked) { border-color: var(--pink); background: var(--pink2); }
+  .stars { display: flex; gap: 6px; }
+  .stars button { font-size: 30px; line-height: 1; background: none; border: 0; padding: 4px; cursor: pointer; color: #e7d3df; }
+  .stars button.on { color: #ffb400; }
+  .actions { display: grid; gap: 10px; margin-top: 6px; }
+  .btn { font: inherit; font-weight: 800; font-size: 17px; padding: 14px 18px; border-radius: 999px; border: 0; cursor: pointer; color: #fff; background: var(--pink); box-shadow: 0 4px 0 #c24c7c; }
+  .btn.alt { background: #ffffff; color: var(--pink); border: 2px solid var(--pink); box-shadow: none; }
+  .note { font-size: 14px; color: var(--soft); text-align: center; margin: 10px 0 0; }
+  #done { display: none; background: var(--ok); border-color: #bfe3cb; color: var(--green); font-weight: 700; text-align: center; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <img src="apple-touch-icon.png" alt="">
+    <h1>Fluffy Fever – tilbakemelding</h1>
+    <p>Takk for at dere tester! Det tar 3–5 minutter. Fyll ut det dere vil – alt er frivillig.</p>
+  </header>
+
+  <form id="f" autocomplete="off">
+    <section>
+      <h2>👋 Om dere</h2>
+      <label class="q" for="name">Navn eller kallenavn</label>
+      <input type="text" id="name" name="Navn">
+      <label class="q" for="age">Alder på barnet som spilte</label>
+      <input type="text" id="age" name="Alder" inputmode="numeric" placeholder="f.eks. 6">
+      <label class="q" for="device">Hvilken enhet? <span class="hint">(f.eks. iPad 9. gen, iPhone 13, Samsung-nettbrett)</span></label>
+      <input type="text" id="device" name="Enhet">
+      <label class="q" for="days">Hvor lenge har dere testet?</label>
+      <select id="days" name="Testet i">
+        <option value="">Velg …</option><option>Én gang</option><option>2–3 dager</option><option>Omtrent en uke</option><option>Mer enn en uke</option>
+      </select>
+    </section>
+
+    <section>
+      <h2>🔧 Fungerte alt?</h2>
+      <label class="q">Hang eller krasjet spillet?</label>
+      <div class="chips" data-name="Krasj/heng">
+        <label><input type="radio" name="crash" value="Nei, aldri">Nei, aldri</label>
+        <label><input type="radio" name="crash" value="Én gang">Én gang</label>
+        <label><input type="radio" name="crash" value="Flere ganger">Flere ganger</label>
+      </div>
+      <label class="q" for="crashWhat">Hvis ja: hva gjorde dere da det skjedde?</label>
+      <textarea id="crashWhat" name="Hva skjedde"></textarea>
+
+      <label class="q">Gikk spillet jevnt og fort?</label>
+      <div class="chips" data-name="Fart">
+        <label><input type="radio" name="speed" value="Jevnt og fint">Jevnt og fint</label>
+        <label><input type="radio" name="speed" value="Litt hakkete">Litt hakkete</label>
+        <label><input type="radio" name="speed" value="Tregt">Tregt</label>
+      </div>
+
+      <label class="q">Virket lyd og musikk?</label>
+      <div class="chips" data-name="Lyd">
+        <label><input type="radio" name="sound" value="Ja">Ja</label>
+        <label><input type="radio" name="sound" value="Delvis">Delvis</label>
+        <label><input type="radio" name="sound" value="Nei">Nei</label>
+        <label><input type="radio" name="sound" value="Spilte uten lyd">Spilte uten lyd</label>
+      </div>
+
+      <label class="q">Var Pom og fremgangen der neste dag?</label>
+      <div class="chips" data-name="Fremgang lagret">
+        <label><input type="radio" name="save" value="Ja">Ja</label>
+        <label><input type="radio" name="save" value="Nei, startet på nytt">Nei, startet på nytt</label>
+        <label><input type="radio" name="save" value="Ikke testet">Ikke testet</label>
+      </div>
+
+      <label class="q">Spilte dere uten nett (f.eks. i bilen)?</label>
+      <div class="chips" data-name="Uten nett">
+        <label><input type="radio" name="offline" value="Ja, det virket">Ja, det virket</label>
+        <label><input type="radio" name="offline" value="Ja, men det virket ikke">Ja, men det virket ikke</label>
+        <label><input type="radio" name="offline" value="Ikke prøvd">Ikke prøvd</label>
+      </div>
+    </section>
+
+    <section>
+      <h2>💖 Hva syntes barnet?</h2>
+      <label class="q">Hvor gøy var spillet?</label>
+      <div class="stars" id="stars" role="radiogroup" aria-label="Antall stjerner">
+        <button type="button" data-v="1" aria-label="1 stjerne">★</button><button type="button" data-v="2" aria-label="2 stjerner">★</button><button type="button" data-v="3" aria-label="3 stjerner">★</button><button type="button" data-v="4" aria-label="4 stjerner">★</button><button type="button" data-v="5" aria-label="5 stjerner">★</button>
+      </div>
+
+      <label class="q">Hva likte barnet best? <span class="hint">(velg så mange dere vil)</span></label>
+      <div class="chips" data-name="Likte best" data-multi>
+        <label><input type="checkbox" value="Race the Sunset">Race the Sunset</label>
+        <label><input type="checkbox" value="Wiggle the World">Wiggle the World</label>
+        <label><input type="checkbox" value="Fly High in the Sky">Fly High in the Sky</label>
+        <label><input type="checkbox" value="Pom Studio (kle ut)">Pom Studio</label>
+        <label><input type="checkbox" value="Buddy">Buddy</label>
+        <label><input type="checkbox" value="Mat">Mat</label>
+        <label><input type="checkbox" value="Kos og tannpuss">Kos og tannpuss</label>
+        <label><input type="checkbox" value="Spa og bad">Spa og bad</label>
+        <label><input type="checkbox" value="Ballkast">Ballkast</label>
+        <label><input type="checkbox" value="Såpebobler">Såpebobler</label>
+        <label><input type="checkbox" value="Gjemsel">Gjemsel</label>
+        <label><input type="checkbox" value="Doktor og helse">Doktor og helse</label>
+        <label><input type="checkbox" value="Ta bilder">Ta bilder</label>
+      </div>
+      <label class="q" for="best">Fortell gjerne mer om hva som var gøy</label>
+      <textarea id="best" name="Mest gøy"></textarea>
+
+      <label class="q" for="hard">Var noe vanskelig eller forvirrende?</label>
+      <textarea id="hard" name="Vanskelig"></textarea>
+      <label class="q" for="boring">Var noe kjedelig?</label>
+      <textarea id="boring" name="Kjedelig"></textarea>
+      <label class="q" for="wish">Ønsker barnet seg noe nytt i spillet?</label>
+      <textarea id="wish" name="Ønsker"></textarea>
+    </section>
+
+    <section>
+      <h2>📝 Annet</h2>
+      <label class="q" for="other">Andre kommentarer til Joachim</label>
+      <textarea id="other" name="Annet"></textarea>
+    </section>
+
+    <div class="actions">
+      <button type="button" class="btn" id="send">📤 Send tilbakemeldingen</button>
+      <button type="button" class="btn alt" id="copy">📋 Kopier teksten</button>
+    </div>
+    <p class="note">Skjemaet sender ingenting av seg selv. Du velger selv hvordan du sender det, for eksempel på SMS eller e-post til Joachim.</p>
+    <section id="done" aria-live="polite"></section>
+  </form>
+</main>
+<script>
+(() => {
+  const f = document.getElementById('f'), done = document.getElementById('done');
+  let stars = 0;
+  const KEY = 'ff-feedback-draft';
+  const starBtns = [...document.querySelectorAll('#stars button')];
+  const paintStars = () => starBtns.forEach(b => b.classList.toggle('on', +b.dataset.v <= stars));
+  starBtns.forEach(b => b.addEventListener('click', () => { stars = +b.dataset.v; paintStars(); save(); }));
+  function collect() {
+    const lines = ['FLUFFY FEVER – TILBAKEMELDING', new Date().toLocaleDateString('no-NO'), ''];
+    const add = (k, v) => { if (v && String(v).trim()) lines.push(`${k}: ${String(v).trim()}`); };
+    for (const id of ['name', 'age', 'device']) { const el = document.getElementById(id); add(el.name, el.value); }
+    add('Testet i', document.getElementById('days').value);
+    lines.push('');
+    for (const g of document.querySelectorAll('.chips')) {
+      const vals = [...g.querySelectorAll('input:checked')].map(i => i.value);
+      add(g.dataset.name, vals.join(', '));
+      if (g.dataset.name === 'Krasj/heng') add('Hva skjedde', document.getElementById('crashWhat').value);
+      if (g.dataset.name === 'Uten nett') { lines.push(''); add('Hvor gøy (1–5 stjerner)', stars ? '★'.repeat(stars) + ` (${stars})` : ''); }
+    }
+    for (const id of ['best', 'hard', 'boring', 'wish', 'other']) { const el = document.getElementById(id); add(el.name, el.value); }
+    return lines.join('\n');
+  }
+  function save() {
+    try {
+      const d = { stars, v: {}, c: [...f.querySelectorAll('input[type=radio]:checked, input[type=checkbox]:checked')].map(i => i.name + '|' + i.value) };
+      for (const el of f.querySelectorAll('input[type=text], textarea, select')) d.v[el.id] = el.value;
+      localStorage.setItem(KEY, JSON.stringify(d));
+    } catch (e) {}
+  }
+  try {
+    const d = JSON.parse(localStorage.getItem(KEY) || 'null');
+    if (d) { stars = d.stars || 0; paintStars();
+      for (const id in d.v) { const el = document.getElementById(id); if (el) el.value = d.v[id]; }
+      for (const c of d.c || []) { const [n, v] = c.split('|'); const el = [...f.querySelectorAll('input')].find(i => i.name === n && i.value === v || (!i.name && i.value === v)); if (el) el.checked = true; } }
+  } catch (e) {}
+  f.addEventListener('input', save); f.addEventListener('change', save);
+  const show = msg => { done.textContent = msg; done.style.display = 'block'; done.scrollIntoView({ behavior: 'smooth', block: 'center' }); };
+  const copy = async text => { try { await navigator.clipboard.writeText(text); return true; } catch (e) { const t = document.createElement('textarea'); t.value = text; document.body.appendChild(t); t.select(); let ok = false; try { ok = document.execCommand('copy'); } catch (e2) {} t.remove(); return ok; } };
+  document.getElementById('send').addEventListener('click', async () => {
+    const text = collect();
+    if (navigator.share) { try { await navigator.share({ title: 'Fluffy Fever – tilbakemelding', text }); show('Tusen takk for tilbakemeldingen! 💖'); return; } catch (e) { if (e && e.name === 'AbortError') return; } }
+    show(await copy(text) ? 'Teksten er kopiert! Lim den inn i en SMS eller e-post til Joachim. Tusen takk! 💖' : 'Kunne ikke kopiere automatisk – merk teksten og kopier den selv.');
+  });
+  document.getElementById('copy').addEventListener('click', async () => { show(await copy(collect()) ? 'Teksten er kopiert! Lim den inn i en SMS eller e-post til Joachim. 💖' : 'Kunne ikke kopiere automatisk.'); });
+})();
+</script>
+</body>
+</html>
